@@ -39,7 +39,7 @@ public class word {
 		return wor;
 	}
 	
-	void compare(word wordToGuess) {
+	boolean compare(word wordToGuess) {
 		
 		for (int i=0; i<characters.size(); i++) {
 			
@@ -51,8 +51,7 @@ public class word {
 				
 			}}
 		if (this.correctLetters == wordToGuess.get_word().length()) {
-			System.out.println("You Win");
-			System.exit(0);
+			return true;
 		}
 		else {
 			for (int i=0; i<characters.size(); i++) {
@@ -73,6 +72,7 @@ public class word {
 				}
 		}
 		this.reset_compare(wordToGuess);
+		return false;
 	}
 	
 	void reset_compare(word wordToGuess) {

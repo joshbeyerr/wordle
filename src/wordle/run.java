@@ -7,8 +7,6 @@ public class run {
 		game thing = new game();
 		
 		word th = (thing.get_word());
-//		System.out.printf("Word to guess: %s \n", th.get_word());
-		
 		
 		Scanner scanner = new Scanner(System.in);
 		
@@ -17,16 +15,26 @@ public class run {
 	        System.out.println("Please enter a 5 letter word:");
 
 	        // Read user input
-	        String userInput = scanner.nextLine();
-
-	  
+	        String userInput = scanner.nextLine().toLowerCase();
 	        
-	        thing.user(userInput);
+	        if (userInput.length() == 5) {
+		        boolean result = thing.user(userInput);
+		        
+		        if (result) {
+		        	System.out.println("You Win");
+					break;
+		        }
+	        }
+	        else {
+	        	System.out.println("Invalid Input");
+	        }
 			
 		}
-		
-		System.out.println("You lose!");
-		System.out.printf("Word was: %s \n", th.get_word());
+
+		if (thing.guesses_count() >= 6) {
+			System.out.println("You lose!");
+			System.out.printf("Word was: %s \n", th.get_word());
+		}
 		
         scanner.close();
 	}

@@ -27,14 +27,16 @@ public class game {
 		return this.user_guesses;
 	}
 	
-	void user(String guess) {
+	boolean user(String guess) {
 		word userWord = new word(guess);
 		
-		userWord.compare(wor);
+		boolean result = userWord.compare(wor);
 		
 		userWord.print_score2();
 		
 		user_guesses += 1;
+		
+		return result;
 	}
 	
 	String RandomWordGenerator() {
