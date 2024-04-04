@@ -24,6 +24,11 @@ public class game {
 		return wor;
 	}
 	
+	// for testing purposes
+	void set_word(String testWord ) {
+		wor = new word(testWord);
+	}
+	
 	int guesses_count() {
 		return this.user_guesses;
 	}

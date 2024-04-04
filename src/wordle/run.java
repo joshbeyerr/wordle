@@ -10,6 +10,7 @@ public class run {
 		
 		Scanner scanner = new Scanner(System.in);
 		
+		
 		while(thing.guesses_count() < 6) {
 	        
 	        System.out.println("Please enter a 5 letter word:");

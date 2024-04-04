@@ -44,10 +44,14 @@ public class word {
 		for (int i=0; i<characters.size(); i++) {
 			
 			if (characters.get(i).get_char() == wordToGuess.get_characters().get(i).get_char()) {
-				characters.get(i).set_correct(1);
 				
-				wordToGuess.get_characters().get(i).set_compare(1);
-				this.correctLetters += 1;
+				if (wordToGuess.get_characters().get(i).get_compare() == 0) {
+					characters.get(i).set_correct(1);
+					
+					wordToGuess.get_characters().get(i).set_compare(1);
+					this.correctLetters += 1;
+				}
+
 				
 			}}
 		if (this.correctLetters == wordToGuess.get_word().length()) {
@@ -61,10 +65,10 @@ public class word {
 					if (characters.get(i).get_char() == wordToGuess.pureChars[j]) {
 						
 						// if character hasnt already been marked
-						if (wordToGuess.get_characters().get(j).get_compare() == 0) {
+						if (wordToGuess.get_characters().get(i).get_compare() == 0) {
 							characters.get(i).set_correct(2);
 							
-							wordToGuess.get_characters().get(j).set_compare(1);
+							wordToGuess.get_characters().get(i).set_compare(1);
 							break;
 						}
 					}
