@@ -11,6 +11,7 @@ public class game {
 	private word wor;
 	
 	private int user_guesses = 0;
+	private ArrayList<String> wordArray;
 	
 	game(){
 		word thang = new word(this.RandomWordGenerator());
@@ -39,6 +40,31 @@ public class game {
 		return result;
 	}
 	
+	boolean valid_word(String gues) {
+		int low = 0;
+		int high = wordArray.size() - 1;
+		int mid;
+		
+		while (low <= high) {
+			mid = (low+high)/2;
+			
+			int comp = gues.compareTo(wordArray.get(mid));
+			
+			if (comp == 0) {
+				return true;
+			}
+			// positive if wordArray is bigger
+			else if (comp > 0) {
+				low = mid + 1;
+			}
+			else {
+				high = mid - 1;
+			}
+		}
+		return false;	
+	}
+
+	
 	String RandomWordGenerator() {
 		
 		try {
@@ -46,8 +72,8 @@ public class game {
 			BufferedReader reader = new BufferedReader(new FileReader("words.txt"));
 
             String currentLine;
-            
-            ArrayList<String> wordArray = new ArrayList<>(6000);
+      
+            wordArray = new ArrayList<>(5757);
 
             while ((currentLine = reader.readLine()) != null) {
             	wordArray.add(currentLine);
